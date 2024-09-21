@@ -1,2 +1,4 @@
-# cpp-thread-example
-A repository for testing thread with C++
+
+# Thread + CPP Test
+
+Repository for testing threads with C++
