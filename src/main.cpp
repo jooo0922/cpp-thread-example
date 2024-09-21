@@ -9,7 +9,11 @@
   정의해야 함.
  */
 void *foo(void *arg) {
-  printf("process id is %d", getpid());
+  // 현재 실행 중인 thread 의 식별자(스레드 ID) 반환
+  // -> std::thread 로 치면 std::this_thread::get_id() 에 해당
+  long thread_id = (long int)pthread_self();
+  printf("process id is %d\n", getpid());
+  printf("this is thread %ld\n", thread_id);
   return NULL;
 }
 
