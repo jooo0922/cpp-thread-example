@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h> // 프로세스 관련 함수 사용을 위해 포함(Linux 및 MacOS 에서만 지원되는 헤더)
@@ -20,10 +19,18 @@ void *foo(void *arg) {
 int main() {
   // 스레드 생성
   pthread_t thread1;
+  pthread_t thread3;
+  pthread_t thread2;
+
+  // 동일한 작업을 수행하는 여러 스레드 생성 -> 멀티스레딩
   pthread_create(&thread1, NULL, foo, NULL);
+  pthread_create(&thread2, NULL, foo, NULL);
+  pthread_create(&thread3, NULL, foo, NULL);
 
   // 생성한 스레드가 작업을 완료해서 Main thread 에 복귀할 때까지 대기
   pthread_join(thread1, NULL);
+  pthread_join(thread2, NULL);
+  pthread_join(thread3, NULL);
 
   return 0;
 }
